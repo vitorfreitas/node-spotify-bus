@@ -72,6 +72,5 @@ class NodeSpotifyFactory {
   }
 }
 
-module.exports = {
-  NodeSpotifyFactory
-}
+module.exports = NodeSpotifyFactory.create()
+
