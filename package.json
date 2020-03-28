@@ -1,0 +1,19 @@
+{
+  "name": "node-spotify",
+  "version": "1.0.0",
+  "description": "Check what song, artist and album are playing now on your machine",
+  "main": "index.js",
+  "repository": "vitorfreitas/node-spotify-status",
+  "scripts": {
+    "build": "npm publish"
+  },
+  "keywords": ["spotify"],
+  "author": {
+    "name": "Vitor Freitas",
+    "email": "vitorldfreitas@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dbus": "^1.0.7"
+  }
+}
