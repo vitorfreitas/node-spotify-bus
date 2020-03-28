@@ -1,9 +1,9 @@
 {
-  "name": "node-spotify",
+  "name": "node-spotify-bus",
   "version": "1.0.0",
-  "description": "Check what song, artist and album are playing now on your machine",
+  "description": "Check what song, artist and album are playing now on your computer",
   "main": "index.js",
-  "repository": "vitorfreitas/node-spotify-status",
+  "repository": "vitorfreitas/node-spotify-bus",
   "scripts": {
     "build": "npm publish"
   },
