@@ -1,6 +1,6 @@
-const DBus = require('dbus')
+const childProcess = require('child_process')
 
-class NodeSpotify {
+class NodeSpotifyLinux {
   constructor(bus, params) {
     this.bus = bus
     this.serviceName = params.serviceName
@@ -56,19 +56,59 @@ class NodeSpotify {
   }
 }
 
+class NodeSpotifyDarwin {
+  _runChildProcessAsync(command) {
+    return new Promise((resolve, reject) => {
+      childProcess.exec(command, (err, stdout) => {
+        if (err) {
+          reject(err)
+        }
+
+        resolve(stdout)
+      })
+    })
+  }
+
+  async getSong() {
+    const command =
+      "osascript -e 'tell application \"Spotify\" to name of current track as string'"
+    const result = await this._runChildProcessAsync(command)
+    return result
+  }
+
+  async getAlbum() {
+    const command =
+      "osascript -e 'tell application \"Spotify\" to album of current track as string'"
+    const result = await this._runChildProcessAsync(command)
+    return result
+  }
+
+  async getArtist() {
+    const command =
+      "osascript -e 'tell application \"Spotify\" to artist of current track as string'"
+    const result = await this._runChildProcessAsync(command)
+    return result
+  }
+}
+
 class NodeSpotifyFactory {
   static create() {
-    const bus = DBus.getBus('session')
+    if (process.platform === 'linux') {
+      const DBus = require('dbus')
+      const bus = DBus.getBus('session')
 
-    const serviceName = 'org.mpris.MediaPlayer2.spotify'
-    const objectPath = '/org/mpris/MediaPlayer2'
-    const interfaceName = 'org.mpris.MediaPlayer2.Player'
+      const serviceName = 'org.mpris.MediaPlayer2.spotify'
+      const objectPath = '/org/mpris/MediaPlayer2'
+      const interfaceName = 'org.mpris.MediaPlayer2.Player'
 
-    return new NodeSpotify(bus, {
-      serviceName,
-      objectPath,
-      interfaceName
-    })
+      return new NodeSpotifyLinux(bus, {
+        serviceName,
+        objectPath,
+        interfaceName
+      })
+    }
+
+    return new NodeSpotifyDarwin()
   }
 }
 

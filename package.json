@@ -1,19 +1,21 @@
 {
   "name": "node-spotify-bus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check what song, artist and album are playing now on your computer",
   "main": "index.js",
   "repository": "vitorfreitas/node-spotify-bus",
   "scripts": {
     "build": "npm publish"
   },
-  "keywords": ["spotify"],
+  "keywords": [
+    "spotify"
+  ],
   "author": {
     "name": "Vitor Freitas",
     "email": "vitorldfreitas@gmail.com"
   },
   "license": "MIT",
-  "dependencies": {
+  "optionalDependencies": {
     "dbus": "^1.0.7"
   }
 }
