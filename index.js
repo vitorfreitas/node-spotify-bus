@@ -1,4 +1,5 @@
 const childProcess = require('child_process')
+const os = require('os')
 
 class NodeSpotifyLinux {
   constructor(bus, params) {
@@ -93,7 +94,7 @@ class NodeSpotifyDarwin {
 
 class NodeSpotifyFactory {
   static create() {
-    if (process.platform === 'linux') {
+    if (os.platform() === 'linux') {
       const DBus = require('dbus')
       const bus = DBus.getBus('session')
 

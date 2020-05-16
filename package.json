@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": "vitorfreitas/node-spotify-bus",
   "scripts": {
-    "build": "npm publish"
+    "build": "npm publish",
+    "test": "ava"
   },
   "keywords": [
     "spotify"
@@ -17,5 +18,9 @@
   "license": "MIT",
   "optionalDependencies": {
     "dbus": "^1.0.7"
+  },
+  "devDependencies": {
+    "ava": "^3.8.2",
+    "sinon": "^9.0.2"
   }
 }
